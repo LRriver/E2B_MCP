@@ -22,4 +22,4 @@ python ./e2b_mcp_llamaindex_client.py
 
 效果如下：
 
-![示意图](image.png)
+![示意图](./img/image.png)

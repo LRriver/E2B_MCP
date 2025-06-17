@@ -22,4 +22,4 @@ python ./e2b_mcp_llamaindex_client.py
 
 The result looks like this:
 
-![alt text](image.png)
+![alt text](./img/image.png)
