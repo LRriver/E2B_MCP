@@ -2,12 +2,12 @@
 from llama_index.tools.mcp import BasicMCPClient, McpToolSpec
 from llama_index.core.agent.workflow import AgentWorkflow
 from llama_index.core.workflow import Context
-from llama_index.llms.azure_openai import AzureOpenAI
+# from llama_index.llms.azure_openai import AzureOpenAI
 import os
 import dotenv
 import asyncio
 from llama_index.llms.openai_like import OpenAILike
-from llama_index.llms.vllm import VllmServer
+# from llama_index.llms.vllm import VllmServer
 from llama_index.core.llms import ChatMessage
 
 
@@ -22,10 +22,19 @@ dotenv.load_dotenv()
 # )
 
 # openai_api_base = "http://127.0.0.1:6005/v1"
-api_key = "EMPTY"  
-llm = VllmServer(
-    api_url="http://localhost:6005/v1"
+# api_key = "EMPTY"  
+# llm = VllmServer(
+#     api_url="http://localhost:6005/v1"
+# )
+llm = OpenAILike(
+    model=os.getenv("model"),
+    api_base = os.getenv("llm_api_base"),
+    temperature=0.6,
+    max_tokens=1024,
+    api_key=os.getenv("llm_api_key"),
+    is_chat_model=True,
 )
+
 
 mcp_client = BasicMCPClient("http://127.0.0.1:8000/sse")
 mcp_tool = McpToolSpec(client=mcp_client)
